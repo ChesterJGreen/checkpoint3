@@ -7,22 +7,116 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/style/main.css">
     <link rel="stylesheet" href="assets/style/style.css">
     <title>checkpoint3</title>
 </head>
+<style>
+    body.debug .container,
+    body.debug .container-fluid {
+        outline: 2px double blue;
+        outline-offset: -2px;
+    }
 
-<body>
+    body.debug .row {
+        outline: 2px dashed red;
+        outline-offset: -2px;
+    }
+
+    body.debug [class*="col-"] {
+        outline: 2px dotted forestgreen;
+        outline-offset: -3px;
+    }
+</style>
+
+<body class="">
     <header>
         <nav class="navbar navbar-dark navbar-expand bg-dark text-light">
             <a class="navbar-brand" href="#">
                 <img src="assets/img/logo.png" width="45" height="45" alt="" loading="lazy">
-                <span class="ml-2">Task Manager Master</span>
+                <span class="ml-2">TaskMaster Manager</span>
             </a>
         </nav>
     </header>
     <main class="container">
-        <div id="app"></div>
+        <div class="row my-5">
+            <div class="col-4"></div>
+            <div class="col-4 ">
+                <h1>TaskMasterManagerThingy</h1>
+            </div>
+            <div class="col-4"></div>
+        </div>
+        <!-- //NOTE this is the new list creator -->
+        <div class="row my-2">
+            <div class="col-3">
+                <div class="form-group d-flex">
+                    <label for="listCreator"></label>
+                    <input type="text" class="form-control" name="listCreator" id="" aria-describedby="helpId"
+                        placeholder="Name" required minlength="3" maxlength="50">
+                </div>
+            </div>
+            <div class="col-3 d-flex align-items-center mb-2">
+                <h4 class="px-2">Color:</h4>
+                <input class="dropdown-toggle" type="color" id="color" name="color" value="">
+                <div class="mx-4 mb-3">
+                    <!-- NOTE this is the createList() -->
+                    <button class="btn btn-primary mx-2" type="submit"
+                        onclick="app.listsController.createList()">Create</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-5 mx-5" id="list">
+                <div class="row">
+                    <div class="col-md-12 col-sm-2 my-3 shadow border card">
+                        <div class="">
+
+                            <div class="row text-center bg-primary p-3 header ">
+                                <!-- NOTE this is the removeLIST() -->
+                                <div class="col-12 d-flex justify-content-end"><span type="submit"
+                                        onclick="removeList()">X</span></div>
+                                <div class="col-12"><span><b>List</b></span><br>
+                                    <span>2/3</span>
+                                </div>
+
+                            </div>
+                            <div class="p-3 body">
+                                <!-- //NOTE this is the task with the checkbox -->
+                                <div class="row m-2">
+                                    <div class="col-8 form-check m-2">
+                                        <input class="form-check-input" type="checkbox" value="string" id="Task">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            Task # 1
+                                        </label>
+                                    </div>
+                                    <div class="col-2 m-2">
+                                        <i class="fas fa-trash" type="submit" onclick="removeTask()"></i>
+
+
+                                    </div>
+
+                                </div>
+
+                                <!-- //NOTE this is the task creator field -->
+                                <div class="div p-3 d-flex">
+                                    <input type="text" class="form-control" name="taskCreator" id="taskCreator"
+                                        aria-describedby="helpId" placeholder="Task" minlength="3" maxlength="50"
+                                        required>
+                                    <button type="submit" class="btn rounded" onclick="createTask()"><b>+</b></button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        </div>
     </main>
     <footer class="bg-dark text-light">
         <div class="text-center">
