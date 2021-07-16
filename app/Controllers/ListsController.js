@@ -1,5 +1,7 @@
 import { ProxyState } from "../AppState.js";
-import { valuesService } from "../Services/ValuesService.js";
+import { listsService } from "../Services/ListsService.js";
+
+
 
 
 //Private
@@ -16,14 +18,14 @@ function _draw() {
 }
 
 //Public
-export default class ValuesController {
+export default class listsController {
   constructor() {
-    ProxyState.on("values", _draw);
+    // ProxyState.on("value", _draw);
     _draw()
   }
 
-  addValue() {
-    valuesService.addValue()
-  }
+  // addValue() {
+  //   valuesService.addValue()
+  // }
 
 }
