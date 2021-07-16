@@ -41,7 +41,7 @@
             </a>
         </nav>
     </header>
-    <main class="container">
+    <main class="container-fluid">
         <div class="row my-5">
             <div class="col-4"></div>
             <div class="col-4 ">
@@ -50,26 +50,28 @@
             <div class="col-4"></div>
         </div>
         <!-- //NOTE this is the new list creator -->
-        <div class="row my-2">
+        <div class="row my-2 mx-5">
             <div class="col-3">
-                <div class="form-group d-flex">
-                    <label for="listCreator"></label>
-                    <input type="text" class="form-control" name="listCreator" id="" aria-describedby="helpId"
-                        placeholder="Name" required minlength="3" maxlength="50">
-                </div>
+                <form onsubmit="app.listsController.createList()">
+                    <div class="form-group d-flex">
+                        <label for="name"></label>
+                        <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId"
+                            placeholder="Name" required minlength="3" maxlength="50">
+                    </div>
+
             </div>
             <div class="col-3 d-flex align-items-center mb-2">
                 <h4 class="px-2">Color:</h4>
-                <input class="dropdown-toggle" type="color" id="color" name="color" value="">
+                <input class="dropdown" type="color" id="color" name="color" value="#ff0000">
                 <div class="mx-4 mb-3">
                     <!-- NOTE this is the createList() -->
-                    <button class="btn btn-primary mx-2" type="submit"
-                        onclick="app.listsController.createList()">Create</button>
+                    <button class="btn btn-primary mx-2" type="submit">Create</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4 col-sm-5 mx-5" id="list">
+        <div class="row justify-content-center" id="list">
+            <div class="col-md-4 col-sm-5 mx-5">
                 <div class="row">
                     <div class="col-md-12 col-sm-2 my-3 shadow border card">
                         <div class="">

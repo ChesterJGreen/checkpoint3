@@ -4,8 +4,8 @@ import { isValidProp } from "./Utils/isValidProp.js"
 
 class AppState extends EventEmitter {
   /** @type {Value[]} */
-  Lists = []
-  Tasks = []
+  lists = []
+  tasks = []
 }
 
 export const ProxyState = new Proxy(new AppState(), {

@@ -7,10 +7,10 @@ import Task from "../Models/Task.js";
 class ListsService {
 
   createList(rawList) {
-    ProxyState.lists = [...ProxyState.lists, new Lists(rawList)]
+    ProxyState.lists = [...ProxyState.lists, new List(rawList)]
   }
   addTask(rawTask) {
-    ProxyState.tasks = [...ProxyState.tasks, new Tasks(rawTask)]
+    ProxyState.tasks = [...ProxyState.tasks, new Task(rawTask)]
   }
 
   destroy(id) {

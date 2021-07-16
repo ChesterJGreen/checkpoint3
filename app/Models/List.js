@@ -12,7 +12,7 @@ export default class List {
 
   }
   get Template() {
-    return `<div class="list col-md-4 col-sm-5 mx-5">
+    return `<div class="list col-md-3 col-sm-5 mx-3">
     <div class="row">
         <div class="col-md-12 col-sm-2 my-3 shadow border card">
             <div class="">
@@ -20,7 +20,7 @@ export default class List {
                     <!-- NOTE this is the removeLIST() -->
                     <div class="col-12 d-flex justify-content-end"><span type="submit"
                             onclick="removeList(${this.id})">X</span></div>
-                    <div class="col-12"><span><b>List</b></span><br>
+                    <div class="col-12"><span><b>${this.name.toUpperCase()}</b></span><br>
                         <span>${this.tasksReady}/${this.tasksTotal}</span>
                     </div>
 
@@ -29,8 +29,8 @@ export default class List {
                     <!-- //NOTE this is the task with the checkbox -->
                     <div class="row m-2">
                         <div class="col-8 form-check m-2">
-                            <input class="form-check-input" type="checkbox" value="string" id="Task">
-                            <label class="form-check-label" for="defaultCheck1">
+                            <input class="form-check-input" type="checkbox" value="string" id="task">
+                            <label class="form-check-label" for="defaultCheck1">Tasks 1
                             </label>
                         </div>
                         <div class="col-2 m-2">
@@ -39,7 +39,7 @@ export default class List {
                     </div>
                     <!-- //NOTE this is the task creator field -->
                     <div class="div p-3 d-flex">
-                        <input type="text" class="form-control" name="taskCreator" id="taskCreator"
+                        <input type="text" class="form-control" name="tasks" id="${generateId()}"
                             aria-describedby="helpId" placeholder="Task" minlength="3" maxlength="50"
                             required>
                         <button type="submit" class="btn rounded" onclick="createTask()"><b>+</b></button>
