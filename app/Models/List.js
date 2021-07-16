@@ -18,8 +18,8 @@ export default class List {
             <div class="">
                 <div class="row text-center bg-primary p-3 header ">
                     <!-- NOTE this is the removeLIST() -->
-                    <div class="col-12 d-flex justify-content-end"><span type="submit"
-                            onclick="removeList(${this.id})">X</span></div>
+                    <div class="col-12 d-flex justify-content-end"><span title="delete list" type="submit"
+                            onclick="app.ListsController.destroy(${this.id})">X</span></div>
                     <div class="col-12"><span><b>${this.name.toUpperCase()}</b></span><br>
                         <span>${this.tasksReady}/${this.tasksTotal}</span>
                     </div>
@@ -34,7 +34,7 @@ export default class List {
                             </label>
                         </div>
                         <div class="col-2 m-2">
-                            <i class="fas fa-trash" type="submit" onclick="removeTask()"></i>
+                            <i class="fas fa-trash" type="submit" title="delete task" onclick="removeTask()"></i>
                         </div>
                     </div>
                     <!-- //NOTE this is the task creator field -->

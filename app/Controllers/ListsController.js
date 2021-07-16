@@ -19,7 +19,7 @@ function _draw() {
 export default class listsController {
   constructor() {
     ProxyState.on("lists", _draw);
-    // ProxyState.on('tasks', _draw);
+    ProxyState.on('tasks', _draw);
     _draw()
   }
 
@@ -35,6 +35,13 @@ export default class listsController {
     listsService.createList(rawList)
     form.reset()
   }
+
+  destroy(id) {
+    listsService.destroy(id)
+    console.log('destroy id')
+
+  }
+
   // addValue() {
   //   valuesService.addValue()
   // }
