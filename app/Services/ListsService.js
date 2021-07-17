@@ -15,7 +15,6 @@ class ListsService {
 
   destroy(id) {
     ProxyState.lists = ProxyState.lists.filter(list => list.id != id)
-    console.log(id)
     ProxyState.tasks = ProxyState.tasks.filter(task => task.id != id)
   }
 

@@ -12,14 +12,14 @@ export default class List {
 
   }
   get Template() {
-    return `<div class="list col-md-3 col-sm-5 mx-3">
+    return /*html*/`<div class="list col-md-3 col-sm-5 mx-3">
     <div class="row">
         <div class="col-md-12 col-sm-2 my-3 shadow border card">
             <div class="">
                 <div class="row text-center bg-primary p-3 header ">
                     <!-- NOTE this is the removeLIST() -->
-                    <div class="col-12 d-flex justify-content-end"><span title="delete list" type="submit"
-                            onclick="app.ListsController.destroy(${this.id})">X</span></div>
+                    <div class="col-12 d-flex justify-content-end"><span title="delete list" type=""
+                            onclick="app.listsController.destroy('${this.id}')">X</span></div>
                     <div class="col-12"><span><b>${this.name.toUpperCase()}</b></span><br>
                         <span>${this.tasksReady}/${this.tasksTotal}</span>
                     </div>

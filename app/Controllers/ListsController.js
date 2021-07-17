@@ -38,7 +38,7 @@ export default class listsController {
 
   destroy(id) {
     listsService.destroy(id)
-    console.log('destroy id')
+
 
   }
 
