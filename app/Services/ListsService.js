@@ -15,13 +15,14 @@ class ListsService {
     ProxyState.tasks = [...ProxyState.tasks, new Task(rawTask)]
   }
   removeList(id) {
-    window.confirm('Are you sure you want to delete?')
-    if (confirm) {
+    if (window.confirm('Are you sure you want to delete?')) {
       ProxyState.lists = ProxyState.lists.filter(list => list.id != id)
       ProxyState.tasks = ProxyState.tasks.filter(tasks => tasks.listId != id)
     }
   }
 }
+
+
 
 
 
