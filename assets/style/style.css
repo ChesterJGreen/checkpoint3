@@ -1,1 +1,21 @@
 /* BASIC STYLES HERE */
+
+.text-shadow {
+  color: white;
+	font-size: 20px;
+	text-shadow: -1px 1px 0 #000,
+				  1px 1px 0 #000,
+				 1px -1px 0 #000;
+}
+
+
+
+.action {
+  text-shadow: -1px 1px 10px white;
+  cursor: pointer;
+}
+
+.action:hover {
+  transform: scale(1.1);
+  text-shadow: -1px 1px 4px white;
+  }

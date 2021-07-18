@@ -20,7 +20,7 @@ function _draw() {
 export default class listsController {
   constructor() {
     ProxyState.on("lists", _draw);
-    ProxyState.on('tasks', _draw);
+    //ProxyState.on('tasks', _draw);
     // ProxyState.on('lists', saveState);
     // ProxyState.on('tasks', saveState);
     // loadState()
@@ -48,7 +48,7 @@ export default class listsController {
 
   addTask(listId) {
 
-    event.preventDefault()
+    /*event.preventDefault()
     let newTask = event.target
     let rawTask = {
       listId: newTask.listId.value,
@@ -56,7 +56,7 @@ export default class listsController {
     }
     console.log(rawTask)
     listsService.addTask(rawTask)
-    newTask.reset()
+    newTask.reset()*/
   }
 
   // addValue() {

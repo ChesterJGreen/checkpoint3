@@ -5,7 +5,7 @@ import { isValidProp } from "./Utils/isValidProp.js"
 class AppState extends EventEmitter {
   /** @type {Value[]} */
   lists = []
-  tasks = []
+
 }
 
 export const ProxyState = new Proxy(new AppState(), {

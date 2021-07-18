@@ -15,7 +15,7 @@ export const modal = function () {
         'Your item has been deleted.',
         'success',
         ProxyState.lists = ProxyState.lists.filter(list => list.id != id),
-        ProxyState.tasks = ProxyState.tasks.filter(task => task.id != id)
+        //ProxyState.tasks = ProxyState.tasks.filter(task => task.id != id)
       )
     }
   })

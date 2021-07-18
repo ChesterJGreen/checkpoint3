@@ -2,16 +2,16 @@ import { ProxyState } from "../AppState.js";
 import { generateId } from "../Utils/GenerateId.js";
 
 export default class Task {
-  constructor({ name, listId, id = generateId() }) {
+  constructor({ name, id = generateId(), completed = false }) {
     this.name = name
     this.id = id
-    this.listId = listId
+    this.completed = completed
   }
   get Template() {
     return `
     <div class="row m-2">
       <div class="col-8 form-check m-2">
-        <input class="form-check-input" type="checkbox" value="" id="${this.listId}">
+        <input class="form-check-input" type="checkbox" value="${this.completed}" id="${this.id}">
         <label class="form-check-label" for="defaultCheck1">${this.name}
         </label>
       </div>

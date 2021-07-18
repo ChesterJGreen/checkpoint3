@@ -3,7 +3,7 @@ import Task from "../Models/Task.js";
 
 class TasksService {
   addTask() {
-    ProxyState.tasks = [...ProxyState.tasks, new Task({ rawTask })]
+    //ProxyState.tasks = [...ProxyState.tasks, new Task({ rawTask })]
   }
 }
 
