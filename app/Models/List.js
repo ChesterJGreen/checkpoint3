@@ -3,15 +3,29 @@ import { generateId } from "../Utils/GenerateId.js"
 // import { modal } from "../Utils/Modal.js"
 
 export default class List {
-  constructor({ name, color, tasksTotal = 1, tasksReady, id = generateId() }) {
+  constructor({ name, color, id = generateId(), tasks = [] }) {
     this.name = name
     this.color = color
-    this.tasksTotal = tasksTotal
-    this.tasksReady = tasksReady
     this.id = id
+    this.tasks = tasks
 
 
   }
+  get tasksTotal() {
+    return this.tasks.length
+  }
+
+  get tasksPending() {
+    let count = 0
+    this.tasks.forEach(task => {
+      if (task.completed == false) {
+        count++
+      }
+
+    })
+    return count
+  }
+
   get Template() {
     return /*html*/`<div class="list col-md-3 col-sm-5 mx-3">
     <div class="row">
@@ -22,7 +36,7 @@ export default class List {
                     <div class="col-12 d-flex justify-content-end"><span title="delete list" type=""
                             onclick="app.listsController.removeList('${this.id}')">X</span></div>
                     <div class="col-12"><span><b>${this.name.toUpperCase()}</b></span><br>
-                        <span>${this.tasksReady}/${this.tasksTotal}</span>
+                        <span>${this.tasksPending}/${this.tasksTotal}</span>
                     </div>
 
                 </div>
