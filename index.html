@@ -12,6 +12,7 @@
         crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/style/main.css">
     <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="stylesheet" href="sweetalert2.min.css">
     <title>checkpoint3</title>
 </head>
 <style>
@@ -62,7 +63,7 @@
             </div>
             <div class="col-3 d-flex align-items-center mb-2">
                 <h4 class="px-2">Color:</h4>
-                <input class="dropdown" type="color" id="color" name="color" value="#ff0000">
+                <input class="dropdown w-20" type="color" id="color" name="color" value="#ff0000">
                 <div class="mx-4 mb-3">
                     <!-- NOTE this is the createList() -->
                     <button class="btn btn-primary mx-2" type="submit">Create</button>
@@ -79,7 +80,7 @@
                             <div class="row text-center bg-primary p-3 header ">
                                 <!-- NOTE this is the removeLIST() -->
                                 <div class="col-12 d-flex justify-content-end"><span type="submit"
-                                        onclick="removeList()">X</span></div>
+                                        onclick="app.listsController.util.modal()">X</span></div>
                                 <div class="col-12"><span><b>List</b></span><br>
                                     <span>2/3</span>
                                 </div>
@@ -127,6 +128,7 @@
         </div>
     </footer>
 
+    <script src="sweetalert2.min.js"></script>
     <script src="app/main.js" type="module"></script>
 </body>
 

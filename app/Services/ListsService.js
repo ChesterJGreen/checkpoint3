@@ -1,7 +1,9 @@
+// import { Modal } from "bootstrap";
 import { ProxyState } from "../AppState.js";
 import TasksController from "../Controllers/TasksController.js";
 import List from "../Models/List.js";
 import Task from "../Models/Task.js";
+// import { modal } from "../Utils/Modal.js";
 
 
 class ListsService {
@@ -12,15 +14,29 @@ class ListsService {
   addTask(rawTask) {
     ProxyState.tasks = [...ProxyState.tasks, new Task(rawTask)]
   }
-
-  destroy(id) {
-    ProxyState.lists = ProxyState.lists.filter(list => list.id != id)
-    ProxyState.tasks = ProxyState.tasks.filter(task => task.id != id)
-  }
-
-  removeTask(id) {
-    ProxyState.tasks = ProxyState.tasks.filter(task => task.id != id)
+  removeList(id) {
+    window.confirm('Are you sure you want to delete?')
+    if (confirm) {
+      ProxyState.lists = ProxyState.lists.filter(list => list.id != id)
+      ProxyState.tasks = ProxyState.tasks.filter(tasks => tasks.listId != id)
+    }
   }
 }
+
+
+
+
+
+
+
+
+
+// removeTask(id) {
+//   ProxyState.tasks = ProxyState.tasks.filter(task => task.id != id)
+// }
+
+
+
+
 
 export const listsService = new ListsService()

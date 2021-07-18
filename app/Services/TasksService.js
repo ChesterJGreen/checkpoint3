@@ -3,7 +3,7 @@ import Task from "../Models/Task.js";
 
 class TasksService {
   addTask() {
-    ProxyState.task = [...ProxyState.tasks, new Task({ title: Math.random() })]
+    ProxyState.tasks = [...ProxyState.tasks, new Task({ rawTask })]
   }
 }
 

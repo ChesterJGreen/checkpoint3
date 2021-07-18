@@ -1,8 +1,9 @@
 import { ProxyState } from "../AppState.js"
 import { generateId } from "../Utils/GenerateId.js"
+// import { modal } from "../Utils/Modal.js"
 
 export default class List {
-  constructor({ name, color, tasksTotal, tasksReady, id = generateId() }) {
+  constructor({ name, color, tasksTotal = 1, tasksReady, id = generateId() }) {
     this.name = name
     this.color = color
     this.tasksTotal = tasksTotal
@@ -16,10 +17,10 @@ export default class List {
     <div class="row">
         <div class="col-md-12 col-sm-2 my-3 shadow border card">
             <div class="">
-                <div class="row text-center bg-primary p-3 header ">
+                <div class="row text-center bg-new p-3 header ">
                     <!-- NOTE this is the removeLIST() -->
                     <div class="col-12 d-flex justify-content-end"><span title="delete list" type=""
-                            onclick="app.listsController.destroy('${this.id}')">X</span></div>
+                            onclick="app.listsController.removeList('${this.id}')">X</span></div>
                     <div class="col-12"><span><b>${this.name.toUpperCase()}</b></span><br>
                         <span>${this.tasksReady}/${this.tasksTotal}</span>
                     </div>
@@ -27,14 +28,14 @@ export default class List {
                 </div>
                 <div class="p-3 body">
                     <!-- //NOTE this is the task with the checkbox -->
-                    <div class="row m-2">
+                    <div class="row m-2" id="tasks">
                         <div class="col-8 form-check m-2">
                             <input class="form-check-input" type="checkbox" value="string" id="task">
                             <label class="form-check-label" for="defaultCheck1">Tasks 1
                             </label>
                         </div>
                         <div class="col-2 m-2">
-                            <i class="fas fa-trash" type="submit" title="delete task" onclick="removeTask()"></i>
+                            <i class="fas fa-trash" type="" title="delete task" onclick="app.listsServices.removeTask()"></i>
                         </div>
                     </div>
                     <!-- //NOTE this is the task creator field -->
@@ -42,7 +43,7 @@ export default class List {
                         <input type="text" class="form-control" name="tasks" id="${generateId()}"
                             aria-describedby="helpId" placeholder="Task" minlength="3" maxlength="50"
                             required>
-                        <button type="submit" class="btn rounded" onclick="createTask()"><b>+</b></button>
+                        <button type="submit" class="btn rounded" onclick="app.listsController.addTask()"><b>+</b></button>
                     </div>
                 </div>
             </div>
@@ -52,10 +53,12 @@ export default class List {
   }
 
   get MyTasks() {
-    let template = ''
+    let template = '';
+    let tasksTotaled = 0;
     let tasks = ProxyState.tasks.filter(tasks => tasks.listId === this.id)
     tasks.forEach(t => {
       template += t.Template
+      tasksTotaled += t.tasksTotal
     })
     template += `
     <div class="row m-2">
