@@ -1,5 +1,6 @@
 import { ProxyState } from "../AppState.js";
 import { listsService } from "../Services/ListsService.js"
+import { tasksService } from "../Services/TasksService.js";
 // import { loadState, saveState } from "../Utils/LocalStorage.js"
 // import { modal } from "../Utils/Modal.js"
 
@@ -12,7 +13,12 @@ function _draw() {
   let lists = ProxyState.lists
   lists.forEach(list => template += list.Template)
   document.getElementById('list').innerHTML = template
+}
 
+function _drawTasks() {
+  let tasks = ProxyState.lists[tasks]
+  tasks.forEach(tasks => template += tasks.Template)
+  document.getElementById('tasks').innerHTML = template
 }
 
 
@@ -20,7 +26,7 @@ function _draw() {
 export default class listsController {
   constructor() {
     ProxyState.on("lists", _draw);
-    //ProxyState.on('tasks', _draw);
+    ProxyState.on('tasks', _draw);
     // ProxyState.on('lists', saveState);
     // ProxyState.on('tasks', saveState);
     // loadState()
@@ -46,17 +52,21 @@ export default class listsController {
 
   }
 
-  addTask(listId) {
+  removeTask(id) {
+    listsService.removeTask(id)
+  }
 
-    /*event.preventDefault()
+  addTask() {
+    debugger
+    event.preventDefault()
     let newTask = event.target
     let rawTask = {
-      listId: newTask.listId.value,
-      name: newTask.task.value
+      name: newTask.list.tasks[value]
     }
     console.log(rawTask)
-    listsService.addTask(rawTask)
-    newTask.reset()*/
+    tasksService.addTask(rawTask)
+    newTask.reset()
+    _drawTasks()
   }
 
   // addValue() {

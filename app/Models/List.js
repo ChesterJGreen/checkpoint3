@@ -47,10 +47,12 @@ export default class List {
                     </div>
                     <!-- //NOTE this is the task creator field -->
                     <div class="div p-3 d-flex">
+                    
                         <input type="text" class="form-control" name="tasks" id="${generateId()}"
                             aria-describedby="helpId" placeholder="Task" minlength="3" maxlength="50"
                             required>
                         <button type="submit" class="btn rounded" onclick="app.listsController.addTask()"><b>+</b></button>
+                        
                     </div>
                 </div>
             </div>
