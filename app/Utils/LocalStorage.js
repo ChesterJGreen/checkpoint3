@@ -1,5 +1,5 @@
 import { ProxyState } from "../AppState.js";
-import List from "../Models/List";
+import List from "../Models/List.js";
 import Task from "../Models/Task.js";
 
 export function saveState() {
@@ -13,7 +13,12 @@ export function loadState() {
   let data = JSON.parse(localStorage.getItem('TaskMasterManager'))
   console.log(data)
   if (data != null) {
-    ProxyState.lists = data.lists.map(l => new List(l))
+    ProxyState.lists = data.lists.map(l => {
+      let tasks = l.tasks.map(t => new Task(t));
+      let newList = new List(l);
+      newList.tasks = tasks;
+      return newList;
+    })
   }
 
 }

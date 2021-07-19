@@ -1,7 +1,7 @@
 import { ProxyState } from "../AppState.js";
 import { listsService } from "../Services/ListsService.js"
 import { tasksService } from "../Services/TasksService.js";
-// import { loadState, saveState } from "../Utils/LocalStorage.js"
+import { loadState, saveState } from "../Utils/LocalStorage.js"
 import { modal } from "../Utils/Modal.js"
 
 
@@ -29,7 +29,7 @@ export default class listsController {
     // ProxyState.on("tasks", _drawTask);
     // ProxyState.on('lists', saveState);
     // ProxyState.on('tasks', saveState);
-    // loadState()
+    loadState()
     _draw()
   }
 
@@ -45,12 +45,12 @@ export default class listsController {
 
     listsService.createList(rawList)
     newList.reset()
-    // saveState()
+    saveState()
   }
 
   removeList(id) {
     listsService.removeList(id)
-    // saveState()
+    saveState()
   }
 
   changeTaskStatus(listId, taskId) {
@@ -59,12 +59,12 @@ export default class listsController {
     debugger
     let checked = event.target.checked
     listsService.changeTaskStatus(listId, taskId, checked)
-    // saveState()
+    saveState()
   }
   removeTask(listId, id) {
     debugger
     listsService.removeTask(listId, id)
-    // saveState()
+    saveState()
   }
 
   addTask(listId) {
@@ -79,7 +79,7 @@ export default class listsController {
     listsService.addTask(rawTask, listId)
     form.reset()
     _draw()
-    // saveState()
+    saveState()
     // newTask.reset()
     // _drawTask()
   }
