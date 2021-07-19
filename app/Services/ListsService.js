@@ -10,18 +10,38 @@ class ListsService {
   createList(rawList) {
     ProxyState.lists = [...ProxyState.lists, new List(rawList)]
   }
-  addTask(rawTask) {
-    ProxyState.lists.tasks = [...ProxyState.lists.tasks, new Task(rawTask)]
+  addTask(rawTask, id) {
+    let modListArray = ProxyState.lists.filter(list => list.id == id)
+    let modList = modListArray[0]
+    modList.tasks = [...modList.tasks, new Task(rawTask)]
+    ProxyState.lists = ProxyState.lists.filter(list => list.id != id)
+    ProxyState.lists = [...ProxyState.lists, modList]
+
+    // for (let i = 0; i < ProxyState.lists.length; i++) {
+    //   if (ProxyState.lists[i].id == id) {
+    //     ProxyState.lists[i].tasks.push(new Task(rawTask))
+    //     return;
+    //   }
+    // }
+    // 
   }
+
+
+
   removeList(id) {
     if (window.confirm('Are you sure you want to delete?')) {
       ProxyState.lists = ProxyState.lists.filter(list => list.id != id)
       //ProxyState.tasks = ProxyState.tasks.filter(tasks => tasks.listId != id)
     }
   }
-  removeTask(id) {
+  removeTask(listId, taskId) {
     if (window.confirm('Are you sure you want to delete this task?')) {
-      ProxyState.lists.tasks = ProxyState.lists.tasks.filter(tasks => tasks.id != id)
+      let modListArray = ProxyState.lists.filter(list => list.id == listId)
+      let modList = modListArray[0]
+      modList.tasks = modList.tasks.filter(t => t.id != taskId)
+      ProxyState.lists = ProxyState.lists.filter(list => list.id != listId)
+      ProxyState.lists = [...ProxyState.lists, modList]
+
     }
   }
 }

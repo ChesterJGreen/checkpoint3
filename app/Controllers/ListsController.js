@@ -15,18 +15,18 @@ function _draw() {
   document.getElementById('list').innerHTML = template
 }
 
-function _drawTasks() {
-  let tasks = ProxyState.lists[tasks]
-  tasks.forEach(tasks => template += tasks.Template)
-  document.getElementById('tasks').innerHTML = template
-}
+// function _drawTask() {
+//   let tasks = ProxyState.lists[tasks]
+//   tasks.forEach(tasks => template += tasks.Template)
+//   document.getElementById('tasks').innerHTML = template
+// }
 
 
 //Public
 export default class listsController {
   constructor() {
     ProxyState.on("lists", _draw);
-    ProxyState.on('tasks', _draw);
+    // ProxyState.on("tasks", _drawTask);
     // ProxyState.on('lists', saveState);
     // ProxyState.on('tasks', saveState);
     // loadState()
@@ -52,25 +52,31 @@ export default class listsController {
 
   }
 
-  removeTask(id) {
-    listsService.removeTask(id)
+  removeTask(listId, id) {
+    debugger
+    listsService.removeTask(listId, id)
   }
 
   addTask(listId) {
-    debugger
     event.preventDefault()
-    let newTask = event.target
+
+    let form = event.target
     let rawTask = {
-      name: newTask.list.tasks[value]
+      name: form.newTask.value,
+      listId: listId
     }
-    console.log(rawTask)
-    tasksService.addTask(rawTask)
-    newTask.reset()
-    _drawTasks()
+
+    listsService.addTask(rawTask, listId)
+    form.reset()
+    _draw()
+    // newTask.reset()
+    // _drawTask()
   }
 
-  // addValue() {
-  //   valuesService.addValue()
-  // }
+  // task status change
+  // the checkbox needs to have an onchange status that calls the function in here. 
+  // pass in the listId and the taskId
+  //go through same things for filter remove 
+  //change it and put 
 
 }

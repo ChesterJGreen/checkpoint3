@@ -18,7 +18,7 @@ export default class List {
   get tasksPending() {
     let count = 0
     this.tasks.forEach(task => {
-      if (task.completed == false) {
+      if (task.completed !== false) {
         count++
       }
 
@@ -47,9 +47,9 @@ export default class List {
                     </div>
                     <!-- //NOTE this is the task creator field -->
                     <div class="div p-3 d-flex">
-                    <form onsubmit="app.listsController.addTask(${this.id})">
-                        <input type="text" class="form-control" id="${generateId()}"
-                            aria-describedby="helpId" placeholder="Task" minlength="3" maxlength="50"
+                    <form onsubmit="app.listsController.addTask('${this.id}')">
+                        <input type="text" class="form-control" id="addTask"
+                            aria-describedby="helpId" placeholder="Task" name="newTask" minlength="3" maxlength="50"
                             required>
                         <button type="submit" class="btn rounded"><b>+</b></button>
                     </form>

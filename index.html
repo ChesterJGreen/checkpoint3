@@ -72,54 +72,6 @@
             </div>
         </div>
         <div class="row justify-content-center" id="list">
-            <div class="col-md-4 col-sm-5 mx-5">
-                <div class="row">
-                    <div class="col-md-12 col-sm-2 my-3 shadow border card">
-                        <div class="">
-
-                            <div class="row text-center bg-primary p-3 header ">
-                                <!-- NOTE this is the removeLIST() -->
-                                <div class="col-12 d-flex justify-content-end"><span type="submit"
-                                        onclick="app.listsController.util.modal()">X</span></div>
-                                <div class="col-12"><span><b>List</b></span><br>
-                                    <span>2/3</span>
-                                </div>
-
-                            </div>
-                            <div class="p-3 body">
-                                <!-- //NOTE this is the task with the checkbox -->
-                                <div class="row m-2">
-                                    <div class="col-8 form-check m-2">
-                                        <input class="form-check-input" type="checkbox" value="string" id="Task">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            Task # 1
-                                        </label>
-                                    </div>
-                                    <div class="col-2 m-2">
-                                        <i class="fas fa-trash" type="submit" title="delete task"
-                                            onclick="removeTask()"></i>
-
-
-                                    </div>
-
-                                </div>
-
-                                <!-- //NOTE this is the task creator field -->
-                                <div class="div p-3 d-flex">
-                                    <input type="text" class="form-control" name="taskCreator" id="taskCreator"
-                                        aria-describedby="helpId" placeholder="Task" minlength="3" maxlength="50"
-                                        required>
-                                    <button type="submit" class="btn rounded" onclick="createTask()"><b>+</b></button>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-
         </div>
     </main>
     <footer class="bg-dark text-light">

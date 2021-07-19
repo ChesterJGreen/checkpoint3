@@ -2,10 +2,11 @@ import { ProxyState } from "../AppState.js";
 import { generateId } from "../Utils/GenerateId.js";
 
 export default class Task {
-  constructor({ name, id = generateId(), completed = false }) {
+  constructor({ name, listId, id = generateId(), completed = false }) {
     this.name = name
     this.id = id
     this.completed = completed
+    this.listId = listId
   }
   get Template() {
     return `
@@ -16,7 +17,7 @@ export default class Task {
         </label>
       </div>
       <div class="col-2 m-2">
-        <i class="fas fa-trash" type="submit" title="delete task" onclick="app.ListsController.removeTask()"></i>
+        <i class="fas fa-trash" type="submit" title="delete task" onclick="app.listsController.removeTask('${this.listId}', '${this.id}')"></i>
       </div>
     </div>
     `
