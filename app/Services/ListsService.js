@@ -44,8 +44,19 @@ class ListsService {
 
     }
   }
-}
+  changeTaskStatus(listId, taskId, checked) {
+    let modListArray = ProxyState.lists.filter(list => list.id == listId)
+    let modList = modListArray[0]
+    let modTaskArray = modList.tasks.filter(task => task.id == taskId)
+    let modTask = modTaskArray[0]
+    modTask.completed = checked
+    modList.tasks = modList.tasks.filter(task => task.id != taskId)
+    modList.tasks = [...modList.tasks, modTask]
+    ProxyState.lists = ProxyState.lists.filter(list => list.id != listId)
+    ProxyState.lists = [...ProxyState.lists, modList]
+  }
 
+}
 
 
 

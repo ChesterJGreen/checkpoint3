@@ -2,7 +2,7 @@ import { ProxyState } from "../AppState.js";
 import { listsService } from "../Services/ListsService.js"
 import { tasksService } from "../Services/TasksService.js";
 // import { loadState, saveState } from "../Utils/LocalStorage.js"
-// import { modal } from "../Utils/Modal.js"
+import { modal } from "../Utils/Modal.js"
 
 
 
@@ -45,16 +45,26 @@ export default class listsController {
 
     listsService.createList(rawList)
     newList.reset()
+    // saveState()
   }
 
   removeList(id) {
     listsService.removeList(id)
-
+    // saveState()
   }
 
+  changeTaskStatus(listId, taskId) {
+    event.preventDefault()
+
+    debugger
+    let checked = event.target.checked
+    listsService.changeTaskStatus(listId, taskId, checked)
+    // saveState()
+  }
   removeTask(listId, id) {
     debugger
     listsService.removeTask(listId, id)
+    // saveState()
   }
 
   addTask(listId) {
@@ -69,6 +79,7 @@ export default class listsController {
     listsService.addTask(rawTask, listId)
     form.reset()
     _draw()
+    // saveState()
     // newTask.reset()
     // _drawTask()
   }
