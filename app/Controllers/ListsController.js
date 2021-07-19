@@ -56,7 +56,7 @@ export default class listsController {
     listsService.removeTask(id)
   }
 
-  addTask() {
+  addTask(listId) {
     debugger
     event.preventDefault()
     let newTask = event.target
